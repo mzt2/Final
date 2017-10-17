@@ -1,0 +1,7 @@
+<%= link_to @post.user.name, user_path(@post.user) %>
+(<%= @post.privacy %>)
+<% if current_user.id == @post.user_id %>
+<%= link_to '[Edit privacy]', edit_post_path(@post) %>
+<% end %><br>
+<%= @post.body %><br>
+<%= render 'like_form' %>

@@ -1,0 +1,10 @@
+<h1>Editing privacy</h1>
+<%= form_for @post do |f| %>
+<p>
+  <%= f.select :privacy, Post.privacies.keys.map {|k| [k, k]} %>
+</p>
+<p>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit %>
+</p>
+<% end %>

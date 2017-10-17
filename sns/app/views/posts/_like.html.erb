@@ -1,0 +1,5 @@
+<%= form_for(post.post_likes.build,
+  html: { method: :post }, url: post_post_likes_path(post)) do |f| %>
+<%= hidden_field_tag :user_id, current_user.id %>
+<%= f.submit "like" %><%= post.post_likes.count %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_for(@like,
+  html: { method: :delete },
+  url: post_post_like_path(post_id: post, id: current_user.id)) do |f| %>
+<%= f.submit "unlike" %><%= post.post_likes.count %>
+<% end %>
