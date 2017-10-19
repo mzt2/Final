@@ -4,7 +4,6 @@ class Posts::PostLikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @like = PostLike.create(user_id: params[:user_id], post_id: params[:post_id])
     @likes = PostLike.where(post_id: params[:post_id])
-    logger.debug @like.errors.inspect
     redirect_to post_path(@post)
   end
 

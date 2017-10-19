@@ -9,10 +9,10 @@
     <%= link_to '[Edit privacy]', edit_post_path(post) %>
     <% end %><br>
     <%= post.body %><br>
-    <%= link_to '[View details]', post_path(post) %>
-    <!-- <% if current_user.id != post.user_id %>
-    ここにlikeボタン
-    <% end %> -->
+    <% post.post_images.each do |image| %>
+    <%= image_tag(image.image_url) %>
+    <% end %><br>
+    <%= link_to '[View detail]', post_path(post) %>
   </li>
   <% end %>
 </ul>

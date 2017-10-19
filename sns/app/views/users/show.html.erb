@@ -2,3 +2,22 @@
 <%= render 'follow_form' if user_signed_in? %>
 <%= @user.introduction %>
 <%= render 'shared/stats' %>
+<%= link_to "[Posts you've liked]", user_posts_path(@user) %>|
+<%= link_to "[Comments you've liked]", user_comments_path(@user) %>
+
+<ul>
+  <% @posts.each do |post| %>
+  <li>
+    <%= link_to post.user.name, user_path(post.user) %>
+    (<%= post.privacy %>)
+    <% if current_user.id == post.user_id %>
+    <%= link_to '[Edit privacy]', edit_post_path(post) %>
+    <% end %><br>
+    <%= post.body %><br>
+    <% post.post_images.each do |image| %>
+    <%= image_tag(image.image_url) %>
+    <% end %><br>
+    <%= link_to '[View detail]', post_path(post) %>
+  </li>
+  <% end %>
+</ul>

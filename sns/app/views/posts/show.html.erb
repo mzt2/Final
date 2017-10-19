@@ -4,4 +4,23 @@
 <%= link_to '[Edit privacy]', edit_post_path(@post) %>
 <% end %><br>
 <%= @post.body %><br>
-<%= render 'like_form' %>
+<% @post.post_images.each do |image| %>
+<%= image_tag(image.image_url) %>
+<% end %><br>
+<%= render 'posts/like_form' %>
+
+<h2>Comments</h2>
+<ul>
+  <% @comments.each do |comment| %>
+  <li>
+    <%= link_to comment.user.name, user_path(comment.user) %><br>
+    <%= comment.comment %><br>
+    <% comment.comment_images.each do |image| %>
+    <%= image_tag(image.image_url) %>
+    <% end %><br>
+    <%= render 'comments/like_form', :comment => comment %>
+  </li>
+  <% end %>
+</ul>
+<h3>New Comment</h3>
+<%= render 'comments/form'%>

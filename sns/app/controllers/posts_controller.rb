@@ -9,8 +9,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.save(post_params)
-      redirect_to 'index'
+      redirect_to posts_path
     else
+      @post = Post.new
+        3.times { @post.post_images.build }
+      @posts = Post.share_with_all.or(Post.where(user_id: current_user.id)).or(Post.share_with_follower.where(user: current_user.following)).includes(:user, :post_images)
       render 'index'
     end
   end
@@ -23,6 +26,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @like = PostLike.find_by(user_id: current_user.id, post_id: params[:id])
     @likes = PostLike.where(post_id: params[:id])
+    @comment = Comment.new
+    3.times { @comment.comment_images.build }
+    @comments = Comment.where(post_id: params[:id])
   end
 
   def update

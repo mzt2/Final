@@ -10,6 +10,6 @@ class Post < ApplicationRecord
   enum privacy: { share_with_all: 0, share_with_follower: 1, share_with_only_me: 2 }
 
   def like_user(user)
-    PostLike.find_by(user_id: user)
+    PostLike.find_by(user_id: user.id, post_id: self.id)
   end
 end

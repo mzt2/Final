@@ -1,0 +1,6 @@
+<%= form_for(object.comment_likes.build,
+  html: { method: :post }, url: comment_comment_likes_path(object)) do |f| %>
+<%= hidden_field_tag :user_id, current_user.id %>
+<%= hidden_field_tag :post_id, object.post_id %>
+<%= f.submit "like" %><%= object.comment_likes.count %>
+<% end %>

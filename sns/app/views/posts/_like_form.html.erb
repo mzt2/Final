@@ -1,9 +1,9 @@
 <% if @post.like_user(current_user) %>
    <div id="like-button">
-   <%= render 'unlike', :post => @post %>
+   <%= render 'posts/unlike' %>
    </div>
 <% else %>
    <div id="like-button">
-     <%= render 'like', :post => @post %>
+     <%= render 'posts/like' %>
   </div>
 <% end %>

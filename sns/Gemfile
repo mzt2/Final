@@ -59,4 +59,4 @@ gem 'devise'
 
 gem 'carrierwave'
 
-gem 'nested_form'
+gem 'mini_magick'

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :name, presence: true
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
            foreign_key: :follower_id,
            dependent: :destroy
@@ -18,7 +18,10 @@ class User < ApplicationRecord
            source: :followee, dependent: :destroy
   has_many :followers, through: :passive_relationships,
            source: :follower, dependent: :destroy
-
+  has_many :post_images, dependent: :destroy
+  has_many :post_likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :comment_images, dependent: :destroy
 
   # def follow(followee)
   #   active_relationships.create(followee_id: followee.id)
