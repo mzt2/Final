@@ -24,11 +24,15 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @like = PostLike.find_by(user_id: current_user.id, post_id: params[:id])
-    @likes = PostLike.where(post_id: params[:id])
-    @comment = Comment.new
-    3.times { @comment.comment_images.build }
-    @comments = Comment.where(post_id: params[:id])
+    if @post.privacy == 'share_with_only_me'
+      render :file=>"/public/404.html", :status=>'404 Not Found'
+    else
+      @like = PostLike.find_by(user_id: current_user.id, post_id: params[:id])
+      @likes = PostLike.where(post_id: params[:id])
+      @comment = Comment.new
+      3.times { @comment.comment_images.build }
+      @comments = Comment.where(post_id: params[:id])
+    end
   end
 
   def update
