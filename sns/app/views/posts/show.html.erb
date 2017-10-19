@@ -1,21 +1,23 @@
-<%= link_to @post.user.name, user_path(@post.user) %>
-<%= @post.created_at %>
-(<%= @post.privacy %>)
+<div class=post>
+  <%= link_to @post.user.name, user_path(@post.user), class: "name" %>
+<span class=details><%= @post.created_at %>
+(<%= @post.privacy %>)</span>
 <% if current_user.id == @post.user_id %>
-<%= link_to '[Edit privacy]', edit_post_path(@post) %>
+<%= link_to '[Edit privacy]', edit_post_path(@post), class: "post_link" %>
 <% end %><br>
 <%= @post.body %><br>
 <% @post.post_images.each do |image| %>
 <%= image_tag(image.image_url) %>
 <% end %><br>
 <%= render 'posts/like_form' %>
+</div>
 
 <h2>Comments</h2>
 <ul>
   <% @comments.each do |comment| %>
-  <li>
-    <%= link_to comment.user.name, user_path(comment.user) %>
-    <%= comment.created_at %><br>
+  <li class=comment>
+    <%= link_to comment.user.name, user_path(comment.user), class: "name" %>
+    <span class=details><%= comment.created_at %></span><br>
     <%= comment.comment %><br>
     <% comment.comment_images.each do |image| %>
     <%= image_tag(image.image_url) %>

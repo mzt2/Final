@@ -1,13 +1,13 @@
 <ul>
   <% @comments.each do |comment| %>
-  <li>
-    <%= link_to comment.user.name, user_path(comment.user) %>
-    <%= comment.created_at %><br>
+  <li class=comment>
+    <%= link_to comment.user.name, user_path(comment.user), class: "name" %>
+    <span class=details><%= comment.created_at %></span><br>
     <%= comment.comment %><br>
     <% comment.comment_images.each do |image| %>
     <%= image_tag(image.image_url) %>
     <% end %><br>
-    <%= link_to '[View Post]', post_path(comment.post) %>
+    <%= link_to '[View Post]', post_path(comment.post), class: "post_link" %>
   </li>
   <% end %>
 </ul>

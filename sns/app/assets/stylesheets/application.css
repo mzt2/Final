@@ -13,6 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+p{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ h2{
+   font-size: 16px;
+   margin-bottom: 15px;
+   border-bottom: 1px solid black;
+ }
+
+ h3{
+   font-size: 16px;
+   margin-bottom: 10px;
+ }
+
  textarea{
    box-sizing: border-box;
    width: 100%;
@@ -23,6 +40,53 @@
 /*input[type="submit"] {float: right;}*/
 
 .form{
-  background: lightgrey;
   padding: 10px;
+}
+
+ul{
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.post{
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid grey;
+}
+
+.comment{
+  padding: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.name{
+  font-weight: bold;
+  color: black;
+}
+
+.details{
+  font-size: 12px;
+  color: grey;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.post_link{
+  font-size: 12px;
+  color: grey;
+}
+
+.like{
+  width: 23px;
+  height: 20px;
+  background:url(icon_heart.png);
+  border-style: none;
+}
+
+.unlike{
+  width: 23px;
+  height: 20px;
+  background:url(icon_heart_red.png);
+  border-style: none;
 }
