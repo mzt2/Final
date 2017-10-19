@@ -1,9 +1,5 @@
 <% if comment.like_user(current_user) %>
-   <div id="like-button">
    <%= render 'comments/unlike', :object => comment %>
-   </div>
 <% else %>
-   <div id="like-button">
      <%= render 'comments/like', :object => comment %>
-  </div>
 <% end %>
