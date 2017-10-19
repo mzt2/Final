@@ -8,7 +8,7 @@ class Comments::CommentLikesController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     @like = CommentLike.find_by(user_id: params[:id], comment_id: params[:comment_id])
     @like.destroy
     @likes = CommentLike.where(comment_id: params[:comment_id])

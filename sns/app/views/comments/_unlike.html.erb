@@ -1,5 +1,6 @@
-<%= form_for(@like,
+<%= form_for(CommentLike.find_by(user_id: object.user_id, comment_id: object.id),
   html: { method: :delete },
   url: comment_like_path(comment_id: object, id: current_user.id)) do |f| %>
+<%= hidden_field_tag :post_id, params[:id] %>
 <%= f.submit "unlike" %><%= object.comment_likes.count %>
 <% end %>
