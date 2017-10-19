@@ -4,6 +4,7 @@
   <% @posts.each do |post| %>
   <li>
     <%= link_to post.user.name, user_path(post.user) %>
+    <%= post.created_at %>
     (<%= post.privacy %>)
     <% if current_user.id == post.user_id %>
     <%= link_to '[Edit privacy]', edit_post_path(post) %>

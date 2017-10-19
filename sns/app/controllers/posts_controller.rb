@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
       3.times { @post.post_images.build }
-    @posts = Post.share_with_all.or(Post.where(user_id: current_user.id)).or(Post.share_with_follower.where(user: current_user.following).share_with_follower).includes(:user, :post_images)
+    @posts = Post.share_with_all.or(Post.where(user_id: current_user.id)).or(Post.share_with_follower.where(user: current_user.following).share_with_follower).includes(:user, :post_images).order(created_at: 'desc')
   end
 
   def create
