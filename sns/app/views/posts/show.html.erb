@@ -22,7 +22,7 @@
     <% comment.comment_images.each do |image| %>
     <%= image_tag(image.image_url) %>
     <% end %><br>
-    <%= render 'comments/like_form', :comment => comment %>
+    <%= render 'comments/like_form', :comment => comment %><%= comment.comment_likes.count %>
   </li>
   <% end %>
 </ul>
