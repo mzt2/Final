@@ -1,16 +1,15 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, url: api_posts_path, remote: true do |f| %>
 
 <%= render 'shared/error', :object => @post %>
 
 <div class="form">
-  <%= f.select :privacy, Post.privacies.keys.map {|k| [k, k]} %>
+  <%= f.select :privacy, Post.privacies.keys.map {|k| [k, k]}, id: "privacy" %>
 </br>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, id: "body" %>
 </br>
   <%= f.fields_for :post_images do |pi| %>
     <%= pi.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></br>
   <% end %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
+  <%= f.button id: "create" %>
 </div>
 <% end %>

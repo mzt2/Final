@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :posts, only: [:index, :create]
+  end
+
   root to: "posts#index"
 
 end
