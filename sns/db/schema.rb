@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171018080851) do
     t.datetime "updated_at", null: false
     t.index ["comment_id", "user_id"], name: "index_comment_likes_on_comment_id_and_user_id", unique: true
     t.index ["comment_id"], name: "index_comment_likes_on_comment_id"
-    t.index ["user_id"], name: "index_comment_likes_on_user_id", unique: true
+    t.index ["user_id"], name: "index_comment_likes_on_user_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,7 +51,8 @@ ActiveRecord::Schema.define(version: 20171018080851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id", "user_id"], name: "index_post_likes_on_post_id_and_user_id", unique: true
-    t.index ["user_id"], name: "index_post_likes_on_user_id", unique: true
+    t.index ["post_id"], name: "index_post_likes_on_post_id"
+    t.index ["user_id"], name: "index_post_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
