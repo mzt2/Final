@@ -12,4 +12,9 @@ class Post < ApplicationRecord
   def like_user(user)
     PostLike.find_by(user_id: user.id, post_id: self.id)
   end
+
+  def image_urls
+    post_images.map{|image| image.image_url}
+  end
+
 end
