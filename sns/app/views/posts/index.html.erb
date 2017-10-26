@@ -1,21 +1,4 @@
 <%= render 'posts/form' %>
-<script src="/assets/post.js"></script>
 <ul id="post" data-user-id="<%= current_user.id %>" data-user-name="<%= current_user.name%>">
-  <!-- <% @posts.each do |post| %>
-  <li class="post">
-    <%= link_to post.user.name, user_path(post.user), class: "name" %>
-    <span class=details><%= post.created_at %>
-    (<%= post.privacy %>)</span>
-    <% if current_user.id == post.user_id %>
-    <%= link_to '[Edit privacy]', edit_post_path(post), class: "post_link" %>
-    <% end %><br>
-    <%= post.body %><br>
-    <% post.post_images.each do |image| %>
-    <%= image_tag(image.image_url) %>
-    <% end %><br>
-    <%= link_to '[View detail]', post_path(post), class: "post_link" %>
-  </li>
-  <% end %> -->
 </ul>
 <button id="add">Get Posts</button>
-<script src="/assets/timeline.js"></script>

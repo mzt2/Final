@@ -1,4 +1,6 @@
 class Api::PostsController < ApplicationController
+  protect_from_forgery with: :null_session
+
 
   def index
     page = params[:page].to_i
@@ -8,12 +10,12 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    render json: @post, each_serializer: PostSerializer
+    render json: @post, serializer: PostSerializer
   end
 
   private
   def post_params
-    params.require(:post).permit(:body, :privacy, post_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:post).permit(:body, :privacy, :user_id, post_images_attributes: [:image])
   end
 
 end
