@@ -8,7 +8,6 @@
   <%= f.fields_for :comment_images do |ci| %>
     <%= ci.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></br>
   <% end %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit %>
 </div>
 <% end %>

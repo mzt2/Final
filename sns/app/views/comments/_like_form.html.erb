@@ -1,5 +1,5 @@
-<% if comment.like_user(current_user) %>
-   <%= render 'comments/unlike', :comment_like => comment.like_user(current_user) %>
+<% if comment.liked_by(current_user) %>
+   <%= render 'comments/unlike', :comment_like => comment.liked_by(current_user) %>
 <% else %>
      <%= render 'comments/like', :comment_like => comment.comment_likes.build %>
 <% end %>

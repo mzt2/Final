@@ -1,9 +1,7 @@
 addOnload(function() {
   var submitButton = document.getElementById('create');
-  console.log(1);
   if(!submitButton){return};
   submitButton.addEventListener('click', function(event) {
-    console.log(2);
     var privacy = document.getElementById('post_privacy').value;
     var body = document.getElementById('body').value;
     var posts = document.getElementById("post");
@@ -16,7 +14,6 @@ addOnload(function() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState == XMLHttpRequest.DONE) {
         newPost(JSON.parse(xhr.responseText));
-        console.log(3);
       }
     }
     event.preventDefault();
@@ -47,7 +44,6 @@ addOnload(function() {
 
 function addOnload(func){
   try {
-    console.log(4);
     window.addEventListener("load", func, false);
   } catch (e) {
     window.attachEvent("onload", func);

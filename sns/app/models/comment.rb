@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
   validates :post_id, presence: true
 
-  def like_user(user)
+  def liked_by(user)
     CommentLike.find_by(user_id: user, comment_id: self.id)
   end
 end
