@@ -4,7 +4,7 @@ class Api::PostsController < ApplicationController
 
   def index
     page = params[:page].to_i
-    posts = Post.share_with_all.or(Post.where(user_id: current_user.id)).or(Post.share_with_follower.where(user: current_user.following).share_with_follower).includes(:user, :post_images).limit(5).offset(5*page).order(created_at: 'desc')
+    posts = Post.on_timeline(current_user).limit(5).offset(5*page).order(created_at: 'desc')
     render json: posts, each_serializer: PostSerializer
   end
 

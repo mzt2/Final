@@ -8,6 +8,7 @@ window.onload=function(){
 
 
   var button = document.getElementById('add');
+  if(!button){return};
   button.addEventListener('click', function(){
     var xhr = new XMLHttpRequest();
     xhr.addEventListener("load", getPosts);
@@ -19,10 +20,11 @@ window.onload=function(){
     var data = JSON.parse(this.responseText);
     console.log(data);
     var posts = document.getElementById("post");
+    if(!posts){return};
     var userId = Number(posts.getAttribute('data-user-id'));
     data.forEach(function(d) {
       var nextPost = document.createElement("li");
-      nextPost.className = "post";
+      nextPost.className = "post onTimeline";
       var date = new Date(d.created_at);
       var html = `
         <a href="/users/${d.user.id}", class="name">

@@ -1,6 +1,7 @@
 addOnload(function() {
   var submitButton = document.getElementById('create');
   console.log(1);
+  if(!submitButton){return};
   submitButton.addEventListener('click', function(event) {
     console.log(2);
     var privacy = document.getElementById('post_privacy').value;

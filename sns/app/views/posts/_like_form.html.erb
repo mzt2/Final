@@ -1,4 +1,4 @@
-<% if @post.like_user(current_user) %>
+<% if @post.liked_by(current_user) %>
    <%= render 'posts/unlike' %>
 <% else %>
      <%= render 'posts/like' %>

@@ -9,12 +9,16 @@ class Post < ApplicationRecord
 
   enum privacy: { share_with_all: 0, share_with_follower: 1, share_with_only_me: 2 }
 
-  def like_user(user)
+  def liked_by(user)
     PostLike.find_by(user_id: user.id, post_id: self.id)
   end
 
   def image_urls
     post_images.map{|image| image.image_url}
+  end
+
+  def self.on_timeline(user)
+    share_with_all.or(Post.where(user_id: user.id)).or(Post.share_with_follower.where(user: user.following).share_with_follower).includes(:user, :post_images)
   end
 
 end
