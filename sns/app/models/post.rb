@@ -18,7 +18,7 @@ class Post < ApplicationRecord
   end
 
   def self.on_timeline(user)
-    share_with_all.or(Post.where(user_id: user.id)).or(Post.share_with_follower.where(user: user.following).share_with_follower).includes(:user, :post_images)
+    where(user_id: user.id).or(Post.where(user: user.following).share_with_all).or(Post.where(user: user.following).share_with_follower).includes(:user, :post_images)
   end
 
 end
