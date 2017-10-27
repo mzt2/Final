@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :user_id, presence: true
   validates :privacy, presence: true
+  validates :post_images, length: {maximum: MAX_POST_IMAGES_LENGTH}
 
   enum privacy: { share_with_all: 0, share_with_follower: 1, share_with_only_me: 2 }
 

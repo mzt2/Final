@@ -8,6 +8,8 @@ class Comment < ApplicationRecord
   validates :comment, presence: true
   validates :user_id, presence: true
   validates :post_id, presence: true
+  validates :comment_images, length: {maximum: MAX_COMMENT_IMAGES_LENGTH}
+
 
   def liked_by(user)
     CommentLike.find_by(user_id: user, comment_id: self.id)
