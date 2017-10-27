@@ -28,9 +28,9 @@
 <h2>Recent Posts</h2>
 <ul>
   <% @posts.each do |post| %>
-  <li>
-    <%= post.user.name %>
-    <%= post.created_at %><br>
+  <li class=post>
+    <span class=name><%= post.user.name %></span>
+    <span class=details><%= post.created_at %></span><br>
     <%= post.body %><br>
     <% post.post_images.each do |image| %>
     <%= image_tag(image.image_url) %>
