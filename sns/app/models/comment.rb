@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  MAX_COMMENT_IMAGES_LENGTH = 3
   belongs_to :post
   belongs_to :user
   has_many :comment_images, dependent: :destroy

@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  MAX_POST_IMAGES_LENGTH = 3
+
   belongs_to :user
   has_many :post_images, dependent: :destroy
   has_many :post_likes, dependent: :destroy
